@@ -262,5 +262,49 @@
   "domain": ["digital", "verification"],
   "discipline": ["computer engineering"],
   "workflow_stage": ["placement", "routing", "simulation"]
+},
+  {
+    "id": "openroad-gui-demo-matt-liberty",
+    "title": "OpenROAD GUI Demo by Matt Liberty",
+    "description": "A demonstration video by Matt Liberty showcasing the OpenROAD graphical interface. Covers viewing placement density heatmaps, power and routing congestion, net tracing, clock tree inspection, and timing analysis.",
+    "url": "https://www.youtube.com/watch?v=5lkKp-gL1Ow",
+    "type": "tutorial",
+    "category": ["learning", "EDA", "visualization"],
+    "domain": ["digital", "layout", "verification"],
+    "discipline": ["computer engineering"],
+    "workflow_stage": ["placement", "routing", "simulation"]
+  },
+  {
+  "id": "openlane-install-guide-vlsi-tool",
+  "title": "How to install OPENLANE (RTL to GDS II) open source free VLSI tool",
+  "description": "A tutorial video showing step‑by‑step installation of the OpenLane RTL‑to‑GDSII ASIC design flow, including Docker setup and SkyWater 130 nm PDK integration.",
+  "url": "https://www.youtube.com/watch?v=nBz9oFpbTv4",
+  "type": "tutorial",
+  "category": ["learning", "workflow", "EDA"],
+  "domain": ["digital", "layout", "synthesis"],
+  "discipline": ["computer engineering"],
+  "workflow_stage": ["installation", "RTL synthesis", "floorplanning", "placement", "routing", "GDSII generation"]
+  },
+  {
+  "id": "openroad-gui-inspection-openlane",
+  "title": "Using the OpenROAD GUI to Inspect Your ASIC Designs",
+  "description": "A tutorial/demo video by Matt Venn and Matt Liberty showing how to use the OpenROAD GUI in the OpenLane flow. Covers placement and power heatmaps, routing congestion, net tracing, clock tree visualization and timing report inspection.",
+  "url": "https://www.youtube.com/watch?v=NuFJLy9ywVg&t=1556s",
+  "type": "tutorial",
+  "category": ["learning", "workflow", "visualization"],
+  "domain": ["digital", "layout", "verification"],
+  "discipline": ["computer engineering"],
+  "workflow_stage": ["placement", "routing", "simulation"]
+ },
+ {
+  "id": "from-top-to-transistors-flow-video",
+  "title": "From Top to Transistors: Open‑Source Verilog to ASIC Flow",
+  "description": "A workshop‑style video demonstrating a full RTL‑to‑GDSII ASIC design flow using open‑source tools including Yosys, OpenROAD (with GUI), and the SkyWater 130 nm PDK. It covers synthesis, placement, routing, DRC, clock tree inspection, and GDSII generation.",
+  "url": "https://www.youtube.com/watch?v=Q99vxvszktI&t=1109s",
+  "type": "tutorial",
+  "category": ["learning", "workflow", "EDA", "visualization"],
+  "domain": ["digital", "layout", "synthesis", "verification"],
+  "discipline": ["computer engineering"],
+  "workflow_stage": ["RTL synthesis", "placement", "routing", "DRC", "GDSII generation"]
 }
 ]
