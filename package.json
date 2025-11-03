@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "vitepress": "^2.0.0-alpha.12"
+  },
+  "scripts": {
+    "site:dev": "vitepress dev",
+    "site:build": "vitepress build",
+    "site:preview": "vitepress preview"
+  },
+  "dependencies": {
+    "reveal.js": "^5.2.1"
+  }
+}
