@@ -10,10 +10,7 @@ hero:
     alt: OCDCpro
   actions:
     - theme: brand
-      text: Introduction Videos
-      link: /intro-videos
-    - theme: alt
-      text: Overiew
+      text: Overview
       link: /overview
     - theme: alt
       text: Handbook
