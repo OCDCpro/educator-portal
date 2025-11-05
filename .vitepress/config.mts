@@ -98,7 +98,7 @@ export default defineConfig({
   ignoreDeadLinks: true,
   // Don't render the Reveal markdown file as a standalone page
   srcExclude: [
-    'public/slides.md'
+    'librelane-materials/slides.md'
   ],
   
   // Set base path dynamically based on environment variable

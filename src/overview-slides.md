@@ -24,7 +24,7 @@ import { onMounted, ref } from 'vue'
 // Import the markdown as raw text at build-time
 // Adjust the relative path if you move this file
 // Use an absolute path so Vite resolves from the project src root reliably
-import slidesText from '/overview-pres/slides.html?raw'
+import slidesText from '/slides.html?raw'
 
 const mdSection = ref(null)
 
