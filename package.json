@@ -12,6 +12,7 @@
   "dependencies": {
     "@primeuix/themes": "^1.2.5",
     "@primevue/themes": "^4.4.1",
+    "js-yaml": "^4.1.0",
     "markdown-it": "^14.1.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.4.1",

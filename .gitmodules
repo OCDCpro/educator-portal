@@ -1,0 +1,3 @@
+[submodule "src/librelane-materials"]
+	path = src/librelane-materials
+	url = git@gitlab.lrz.de:aemy/projects/ocdcpro/librelane-materials.git
