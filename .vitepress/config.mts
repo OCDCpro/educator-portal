@@ -106,15 +106,17 @@ export default defineConfig({
   // Or in package.json: "docs:build:prod": "BASE_PATH=/ocdcpro-ttt-portal/ vitepress build"
   base: process.env.BASE_PATH || '/',
   
-  title: "OCDCpro Teach-the-Teacher Portal",
-  description: "A VitePress Site",
+  title: "OCDCpro Educator Portal",
   themeConfig: {
     // Show deeper on-page outline (right sidebar) similar to Sphinx
     outline: 'deep',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Overview Slides', link: '/overview-slides/' }
+      { text: 'Overview', link: '/overview/' },
+      { text: 'Handbook', link: '/handbook/' },
+      { text: 'Overview Slides', link: '/overview-slides/' },
+      { text: 'Materials', link: '/materials/' }
     ],
 
     // Use path-based sidebars so /handbook/ shows a dedicated, auto-generated sidebar

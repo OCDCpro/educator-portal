@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "OCDCpro Teach-the-Teacher Portal"
+  name: "OCDCpro Educator Portal"
   tagline: Materials and instructions to run your own chip design challenge in classroom settings.
   image:
     src: img/OCDCpro_LogoPaket_OCDC_sekundaer.png
