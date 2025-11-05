@@ -7,7 +7,7 @@
     "site:build": "vitepress build",
     "site:build:prod": "BASE_PATH=/educator-portal/ vitepress build",
     "site:preview": "vitepress preview",
-    "pres:build": "pandoc src/librelane-materials/slides.md -o src/slides.html -t revealjs"
+    "pres:build": "pandoc src/librelane-materials/slides/slides.md -o src/slides.html -t revealjs"
   },
   "dependencies": {
     "@primeuix/themes": "^1.2.5",

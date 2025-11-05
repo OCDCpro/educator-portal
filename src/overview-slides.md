@@ -23,13 +23,9 @@ layout: home
 
 <script setup>
 import { onMounted, ref } from 'vue'
-// Import the markdown as raw text at build-time
-// Adjust the relative path if you move this file
-// Use an absolute path so Vite resolves from the project src root reliably
+
 import IntroSlides from '/slides-intro.vue'
 import slidesText from '/slides.html?raw'
-
-const mdSection = ref(null)
 
 onMounted(async () => {
   // Dynamically import Reveal only on client to avoid SSR issues
@@ -39,21 +35,21 @@ onMounted(async () => {
   // Inject the slides HTML into <div class="slides">
   const slidesEl = document.querySelector('.reveal .slides #mainpres')
   if (slidesEl) {
-    console.log("Slides element found")
     slidesEl.outerHTML = slidesText
   }
-    const link = document.getElementById('reveal-theme')
-    const setTheme = () => {
-      const isDark = document.documentElement.classList.contains('dark')
-      link.href = isDark
-        ? 'https://unpkg.com/reveal.js@5/dist/theme/moon.css'
-        : 'https://unpkg.com/reveal.js@5/dist/theme/solarized.css'
-    }
-    setTheme()
-    new MutationObserver(setTheme).observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    })
+
+  const link = document.getElementById('reveal-theme')
+  const setTheme = () => {
+    const isDark = document.documentElement.classList.contains('dark')
+    link.href = isDark
+      ? 'https://unpkg.com/reveal.js@5/dist/theme/moon.css'
+      : 'https://unpkg.com/reveal.js@5/dist/theme/solarized.css'
+  }
+  setTheme()
+  new MutationObserver(setTheme).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  })
 
 const deck = new Reveal(document.querySelector('.reveal'), {
     plugins: [RevealNotes],
