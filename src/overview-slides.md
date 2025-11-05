@@ -14,6 +14,8 @@ layout: home
   <div class="slides-wrapper">
     <div class="reveal">
       <div class="slides">
+        <IntroSlides/>
+        <section id="mainpres"/>
       </div>
     </div>
   </div>
@@ -24,6 +26,7 @@ import { onMounted, ref } from 'vue'
 // Import the markdown as raw text at build-time
 // Adjust the relative path if you move this file
 // Use an absolute path so Vite resolves from the project src root reliably
+import IntroSlides from '/slides-intro.vue'
 import slidesText from '/slides.html?raw'
 
 const mdSection = ref(null)
@@ -34,9 +37,10 @@ onMounted(async () => {
   const RevealNotes = (await import('reveal.js/plugin/notes/notes.esm.js')).default
 
   // Inject the slides HTML into <div class="slides">
-  const slidesEl = document.querySelector('.reveal .slides')
+  const slidesEl = document.querySelector('.reveal .slides #mainpres')
   if (slidesEl) {
-    slidesEl.innerHTML = slidesText
+    console.log("Slides element found")
+    slidesEl.outerHTML = slidesText
   }
     const link = document.getElementById('reveal-theme')
     const setTheme = () => {
@@ -88,5 +92,15 @@ const deck = new Reveal(document.querySelector('.reveal'), {
     border: 0;
 }
 
+.reveal .slides {
+  font-size: 0.7em;
+}
 
+.reveal h1 {
+  font-size: 3em !important;
+}
+
+.reveal h2 {
+  font-size: 1.8em !important;
+}
 </style>
