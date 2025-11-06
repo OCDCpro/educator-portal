@@ -62,7 +62,7 @@ export default defineConfig({
             // Recursive function to process TOC entries
             const processEntries = (entries: any[]): any[] => {
               return entries.map((entry: any) => {
-                const filePath = entry.file.replace(/\.(md|rst)$/, '')
+                const filePath = entry.file.replace(/\.md$/, '')
                 const title = getTitleFromMarkdown(filePath)
                 
                 const item: any = {
