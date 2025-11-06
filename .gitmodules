@@ -3,4 +3,4 @@
 	url = git@gitlab.lrz.de:aemy/projects/ocdcpro/librelane-materials.git
 [submodule "src/ttt-materials"]
 	path = src/ttt-materials
-	url = git@github.com:ocdcpro/WP3
+	url = https://github.com/hm-aemy/librelane-materials
