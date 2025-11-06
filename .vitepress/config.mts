@@ -4,6 +4,85 @@ import fs from 'node:fs'
 import path from 'node:path'
 import yaml from 'js-yaml'
 
+// Helper function to extract first H1 heading from markdown file
+function getTitleFromMarkdown (filePath: string): string {
+  const fullPath = path.join(handbookRoot, `${filePath}.md`)
+  try {
+    const content = fs.readFileSync(fullPath, 'utf-8')
+    // Match first H1 heading (# Title)
+    const match = content.match(/^#\s+(.+)$/m)
+    if (match) {
+      return match[1].trim()
+    }
+  } catch (error) {
+    // If file doesn't exist or can't be read, fall back to filename
+  }
+  
+  // Fallback: use filename
+  const fileName = filePath.split('/').pop()
+  return fileName.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())
+}
+
+// Build a dictionary of all handbook files and their titles
+const handbookRoot = path.resolve(process.cwd(), 'src/librelane-materials/handbook/source')
+const titleMap: Record<string, string> = {}
+
+function buildTitleMap(dir: string, basePath: string = '') {
+  try {
+    const entries = fs.readdirSync(dir, { withFileTypes: true })
+    
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name)
+      const relativePath = basePath ? `${basePath}/${entry.name}` : entry.name
+      
+      if (entry.isDirectory()) {
+        buildTitleMap(fullPath, relativePath)
+      } else if (entry.isFile() && entry.name.endsWith('.md')) {
+        const filePathWithoutExt = relativePath.replace(/\.md$/, '')
+        titleMap[filePathWithoutExt] = getTitleFromMarkdown(filePathWithoutExt)
+      }
+    }
+  } catch (error) {
+    console.warn(`Could not read directory ${dir}:`, error)
+  }
+}
+
+buildTitleMap(handbookRoot)
+
+// Plugin to convert Sphinx {doc} references to markdown links
+function docReferencePlugin(md) {
+  // Pattern: {doc}`title <path>` or {doc}`path`
+  const docPattern = /\{doc\}`([^`]+)`/g
+  
+  // Hook into inline text rendering
+  md.core.ruler.before('inline', 'doc-references', (state) => {
+    const tokens = state.tokens
+
+    for (let i = 0; i < tokens.length; i++) {
+      if (tokens[i].type !== 'inline') continue
+      
+        const token = tokens[i]
+        
+        const text = token.content
+        if (!text.includes('{doc}')) continue
+        
+        // Parse and replace {doc} references
+        const matches = [...text.matchAll(docPattern)]
+        if (matches.length === 0) continue
+
+        token.content = text.replace(docPattern, (match, content) => {
+            // Extract path from content (handle both `title <path>` and `path` formats)
+            const angleMatch = content.match(/^(.+?)\s*<(.+?)>$/)
+            const path = angleMatch ? angleMatch[2].trim() : content.trim()
+            return `[${path}](${path})`
+        })
+        const newTokens = []        
+    }
+    
+    return true
+  })
+}
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: "src",
@@ -39,25 +118,6 @@ export default defineConfig({
           items: (() => {
             const tocPath = path.resolve(process.cwd(), 'src/librelane-materials/handbook/source/_toc.yml')
             const handbookRoot = path.resolve(process.cwd(), 'src/librelane-materials/handbook/source')
-            
-            // Helper function to extract first H1 heading from markdown file
-            const getTitleFromMarkdown = (filePath: string): string => {
-              const fullPath = path.join(handbookRoot, `${filePath}.md`)
-              try {
-                const content = fs.readFileSync(fullPath, 'utf-8')
-                // Match first H1 heading (# Title)
-                const match = content.match(/^#\s+(.+)$/m)
-                if (match) {
-                  return match[1].trim()
-                }
-              } catch (error) {
-                // If file doesn't exist or can't be read, fall back to filename
-              }
-              
-              // Fallback: use filename
-              const fileName = filePath.split('/').pop()
-              return fileName.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())
-            }
             
             // Recursive function to process TOC entries
             const processEntries = (entries: any[]): any[] => {
@@ -105,5 +165,11 @@ export default defineConfig({
   // Keys are paths relative to srcDir ("src/")
   rewrites: {
     'librelane-materials/handbook/source/:rest*': 'handbook/:rest*',
+  },
+
+  markdown: {
+    config: (md) => {
+      md.use(docReferencePlugin)
+    }
   }
 })

@@ -112,7 +112,7 @@ import MultiSelect from 'primevue/multiselect'
 import Tag from 'primevue/tag'
 // DataTable and Column are globally registered in the VitePress theme, but can be used directly in templates
 
-import collection from '../materials/collection.json'
+import collection from '/ttt-materials/materials/collection.json'
 
 // Normalize data: ensure arrays exist
 const items = (collection || []).map((it) => ({
