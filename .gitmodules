@@ -1,6 +1,6 @@
 [submodule "src/librelane-materials"]
 	path = src/librelane-materials
-	url = git@gitlab.lrz.de:aemy/projects/ocdcpro/librelane-materials.git
+	url = https://github.com/hm-aemy/librelane-materials
 [submodule "src/ttt-materials"]
 	path = src/ttt-materials
-	url = https://github.com/hm-aemy/librelane-materials
+	url = https://github.com/ocdcpro/WP3
