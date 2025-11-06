@@ -92,6 +92,28 @@ export default defineConfig({
     'librelane-materials/slides/slides.md'
   ],
   
+  // Configure Vite to handle missing images gracefully
+  vite: {
+    plugins: [
+      {
+        name: 'ignore-missing-images',
+        resolveId(id) {
+          // If it's an image that might be missing, return a placeholder
+          if (/\.(jpg|jpeg|png|gif|svg|webp)$/.test(id) && id.includes('Bilder5')) {
+            // Return the id itself to prevent further resolution
+            return '\0virtual:missing-image'
+          }
+        },
+        load(id) {
+          if (id === '\0virtual:missing-image') {
+            // Return a data URL for a transparent 1x1 pixel
+            return `export default "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"`
+          }
+        }
+      }
+    ]
+  },
+  
   // Set base path dynamically based on environment variable
   // Usage: BASE_PATH=/my-repo/ npm run docs:build
   // Or in package.json: "docs:build:prod": "BASE_PATH=/ocdcpro-ttt-portal/ vitepress build"
