@@ -84,20 +84,16 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Cohort:</strong></td>
-          <td>Bachelor Students, late semesters</td>
-        </tr>
-        <tr>
-          <td><strong>Targeted major:</strong></td>
-          <td>Computer Science</td>
-        </tr>
-        <tr>
-          <td><strong>Type of course:</strong></td>
-          <td>Block Course</td>
+          <td><strong>Audience:</strong></td>
+          <td>{{ (audienceOptions.find(opt => opt.value === formData.audience) || { label: formData.audience || '—' }).label }}</td>
         </tr>
         <tr>
           <td><strong>Competence level:</strong></td>
-          <td>Beginner, Intermediate (students have basic knowledge, some might have prior experience in designing a chip)</td>
+          <td>{{ (levelOptions.find(opt => opt.value === formData.level) || { label: formData.level || '—' }).label }}</td>
+        </tr>
+        <tr>
+          <td><strong>Type of course:</strong></td>
+          <td>{{ (typeOptions.find(opt => opt.value === formData.type) || { label: formData.type || '—' }).label }}</td>
         </tr>
       </tbody>
     </table>
