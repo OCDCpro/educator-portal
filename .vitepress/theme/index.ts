@@ -11,6 +11,7 @@ import Card from 'primevue/card'
 import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
 import Timeline from 'primevue/timeline';
+import Tag from 'primevue/tag';
 
 
 // Import PrimeIcons
@@ -37,5 +38,6 @@ export default {
     app.component('PrimeDialog', Dialog)
     app.component('PrimeInputText', InputText)
     app.component('PrimeTimeline', Timeline)
+    app.component('PrimeTag', Tag)
   }
 }

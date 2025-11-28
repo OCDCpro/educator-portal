@@ -108,7 +108,9 @@
 
     <h2>Practical Setup</h2>
 
-    TODO
+    <p>The practical setup is based on librelane and designed towards using the IHP 130nm Open PDK.</p>
+
+    <p></p>
 
     <h2>Tools</h2>
 
@@ -134,10 +136,49 @@
 
     <h2>Materials Collection</h2>
 
+    <PrimeDataTable
+      :value="filteredOther"
+      dataKey="url"
+      tableStyle="min-width: 60rem"
+      :stripedRows="true"
+      :rows="20"
+      :paginator="true"
+      :rowsPerPageOptions="[10,20,50]"
+      responsiveLayout="scroll"
+    >
+      <PrimeColumn field="title" header="Title" sortable>
+        <template #body="{ data }">
+          <a :href="data.url" target="_blank" rel="noopener noreferrer">{{ data.title }}</a>
+        </template>
+      </PrimeColumn>
+      <PrimeColumn field="type" header="Type" sortable></PrimeColumn>
+      <PrimeColumn header="Category">
+        <template #body="{ data }">
+          <div class="chip-row">
+            <Tag v-for="(c, idx) in data.category" :key="idx" :value="c" severity="info" class="mr-2 mb-1" />
+          </div>
+        </template>
+      </PrimeColumn>
+      <PrimeColumn header="Domain">
+        <template #body="{ data }">
+          <div class="chip-row">
+            <Tag v-for="(d, idx) in data.domain" :key="idx" :value="d" severity="success" class="mr-2 mb-1" />
+          </div>
+        </template>
+      </PrimeColumn>
+      <PrimeColumn header="Workflow Stages">
+        <template #body="{ data }">
+          <div class="chip-row">
+            <Tag v-for="(w, idx) in data.workflow_stage" :key="idx" :value="w" severity="warning" class="mr-2 mb-1" />
+          </div>
+        </template>
+      </PrimeColumn>
+    </PrimeDataTable>
+
     <h2>Communities and Support</h2>
 
     <PrimeDataTable
-      :value="filteredItems"
+      :value="filteredCommunity"
       dataKey="url"
       tableStyle="min-width: 60rem"
       :stripedRows="true"
@@ -182,21 +223,35 @@
 import { ref, computed } from 'vue'
 import collection from './ttt-materials/materials/collection.json'
 
-// Normalize data
-const items = collection.map(it => ({
-  title: it.title || 'Untitled',
+// Normalize data: ensure arrays exist
+const items = (collection || []).map((it) => ({
+  id: it.id || '',
+  title: it.title || '',
   description: it.description || '',
   url: it.url || '#',
   type: it.type || '',
-  audience: Array.isArray(it.audience) ? it.audience : (it.audience ? [it.audience] : []),
-  topics: Array.isArray(it.topics) ? it.topics : (it.topics ? [it.topics] : []),
-  category: Array.isArray(it.category) ? it.category : (it.category ? [it.category] : []),
-  domain: Array.isArray(it.domain) ? it.domain : (it.domain ? [it.domain] : []),
-  workflow_stage: Array.isArray(it.workflow_stage) ? it.workflow_stage : (it.workflow_stage ? [it.workflow_stage] : []),
-  format: Array.isArray(it.format) ? it.format : (it.format ? [it.format] : [])
+  category: Array.isArray(it.tags) ? it.tags : (it.tags ? [it.tags] : []),
+  domain: Array.isArray(it.topics) ? it.topics : (it.topics ? [it.topics] : []),
+  workflow_stage: Array.isArray(it.workflow_stage) ? it.workflow_stage : (it.workflow_stage ? [it.workflow_stage] : [])
 }))
 
-console.log('Loaded items:', items.length, items)
+const filteredItems = computed(() => {
+  return items
+})
+
+const filteredTools = computed(() => {
+  return items.filter(it => it.type == 'tool')
+})
+
+const filteredCommunity = computed(() => {
+  return items.filter(it => it.type == 'community')
+})
+
+const filteredOther = computed(() => {
+  return items.filter(it => {
+    return it.type !== 'tool' && it.type !== 'community'
+  })
+})
 
 const audienceOptions = computed(() => {
   const set = new Set()
