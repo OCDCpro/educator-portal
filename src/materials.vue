@@ -151,25 +151,29 @@
           <a :href="data.url" target="_blank" rel="noopener noreferrer">{{ data.title }}</a>
         </template>
       </PrimeColumn>
-      <PrimeColumn field="type" header="Type" sortable></PrimeColumn>
+      <PrimeColumn field="type" header="Type" sortable>
+        <template #body="{ data }">
+          <PrimeTag :value="data.type" severity="secondary" />
+        </template>
+      </PrimeColumn>
       <PrimeColumn header="Category">
         <template #body="{ data }">
           <div class="chip-row">
-            <Tag v-for="(c, idx) in data.category" :key="idx" :value="c" severity="info" class="mr-2 mb-1" />
+            <PrimeTag v-for="(c, idx) in data.category" :key="idx" :value="c" severity="info" class="mr-2 mb-1" />
           </div>
         </template>
       </PrimeColumn>
       <PrimeColumn header="Domain">
         <template #body="{ data }">
           <div class="chip-row">
-            <Tag v-for="(d, idx) in data.domain" :key="idx" :value="d" severity="success" class="mr-2 mb-1" />
+            <PrimeTag v-for="(d, idx) in data.domain" :key="idx" :value="d" severity="success" class="mr-2 mb-1" />
           </div>
         </template>
       </PrimeColumn>
       <PrimeColumn header="Workflow Stages">
         <template #body="{ data }">
           <div class="chip-row">
-            <Tag v-for="(w, idx) in data.workflow_stage" :key="idx" :value="w" severity="warning" class="mr-2 mb-1" />
+            <PrimeTag v-for="(w, idx) in data.workflow_stage" :key="idx" :value="w" severity="warning" class="mr-2 mb-1" />
           </div>
         </template>
       </PrimeColumn>
@@ -192,26 +196,9 @@
           <a :href="data.url" target="_blank" rel="noopener noreferrer">{{ data.title }}</a>
         </template>
       </PrimeColumn>
-      <PrimeColumn field="type" header="Type" sortable></PrimeColumn>
-      <PrimeColumn header="Category">
+      <PrimeColumn field="title" header="Title" sortable>
         <template #body="{ data }">
-          <div class="chip-row">
-            <Tag v-for="(c, idx) in data.category" :key="idx" :value="c" severity="info" class="mr-2 mb-1" />
-          </div>
-        </template>
-      </PrimeColumn>
-      <PrimeColumn header="Domain">
-        <template #body="{ data }">
-          <div class="chip-row">
-            <Tag v-for="(d, idx) in data.domain" :key="idx" :value="d" severity="success" class="mr-2 mb-1" />
-          </div>
-        </template>
-      </PrimeColumn>
-      <PrimeColumn header="Workflow Stages">
-        <template #body="{ data }">
-          <div class="chip-row">
-            <Tag v-for="(w, idx) in data.workflow_stage" :key="idx" :value="w" severity="warning" class="mr-2 mb-1" />
-          </div>
+          {{ data.description }}
         </template>
       </PrimeColumn>
     </PrimeDataTable>
@@ -229,11 +216,13 @@ const items = (collection || []).map((it) => ({
   title: it.title || '',
   description: it.description || '',
   url: it.url || '#',
-  type: it.type || '',
+  type: Array.isArray(it.type) ? it.type[0] : (it.type || ''),
   category: Array.isArray(it.tags) ? it.tags : (it.tags ? [it.tags] : []),
   domain: Array.isArray(it.topics) ? it.topics : (it.topics ? [it.topics] : []),
   workflow_stage: Array.isArray(it.workflow_stage) ? it.workflow_stage : (it.workflow_stage ? [it.workflow_stage] : [])
 }))
+
+console.log('Loaded items:', items.length, items.slice(0, 2))
 
 const filteredItems = computed(() => {
   return items
