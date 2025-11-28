@@ -108,9 +108,14 @@
 
     <h2>Practical Setup</h2>
 
-    <p>The practical setup is based on librelane and designed towards using the IHP 130nm Open PDK.</p>
+    <p>For <b>analog</b> designs, the prefered practical setup is the <a href="https://github.com/iic-jku/IIC-OSIC-TOOLS">IIC-OSIC-TOOLS container</a>. </p>
 
-    <p></p>
+    <p>For <b>digital</b> designs, the practical setup is based on librelane and designed towards using the IHP 130nm Open PDK:</p>
+
+    <ul>
+      <li>Docker container as basis: <a href="https://github.com/hm-aemy/librelane-base-image"><tt>ghcr.io/hm-aemy/librelane-base-image:latest</tt></a></li>
+      <li>Use the <a href="https://github.com/hm-aemy/librelane-template">librelane template</a></li>
+    </ul>
 
     <h2>Tools</h2>
 
