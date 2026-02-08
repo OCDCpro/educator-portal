@@ -1,0 +1,2294 @@
+[
+  {
+    "id": "1000",
+    "title": "OpenSTA",
+    "description": "OpenSTA is an open-source Static Timing Analysis (STA) tool used to validate the timing of digital circuits after synthesis and placement.",
+    "type": "tool",
+    "topics": [
+      "digital"
+    ],
+    "workflow_stage": [
+      "sta"
+    ],
+    "format": [
+      "repo"
+    ],
+    "audience": [
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://github.com/The-OpenROAD-Project/OpenSTA",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [
+      "OpenROAD"
+    ],
+    "tags": []
+  },
+  {
+    "id": "1001",
+    "title": "OpenROAD GUI Demo by Matt Liberty",
+    "description": "A demonstration video by Matt Liberty showcasing the OpenROAD graphical interface. Covers viewing placement density heatmaps, power and routing congestion, net tracing, clock tree inspection, and timing analysis.",
+    "type": "video",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "placement",
+      "routing",
+      "sta",
+      "floorplanning"
+    ],
+    "format": [
+      "video"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=5lkKp-gL1Ow",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [
+      "OpenROAD"
+    ],
+    "tags": [
+      "openroad",
+      "gui"
+    ]
+  },
+  {
+    "id": "1002",
+    "title": "Using the OpenROAD GUI to Inspect Your ASIC Designs",
+    "description": "A tutorial/demo video by Matt Venn and Matt Liberty showing how to use the OpenROAD GUI in the OpenLane flow. Covers placement and power heatmaps, routing congestion, net tracing, clock tree visualization and timing report inspection.",
+    "type": "video",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "placement",
+      "routing",
+      "floorplanning"
+    ],
+    "format": [
+      "video"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=NuFJLy9ywVg&t=1556s",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [
+      "OpenROAD"
+    ],
+    "tags": [
+      "openroad",
+      "openlane",
+      "gui"
+    ]
+  },
+  {
+    "id": "1003",
+    "title": "How to install OPENLANE (RTL to GDS II) open source free VLSI tool",
+    "description": "A tutorial video showing step-by-step installation of the OpenLane RTL-to-GDSII ASIC design flow, including Docker setup and SkyWater 130 nm PDK integration.",
+    "type": "video",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "installation"
+    ],
+    "format": [
+      "video"
+    ],
+    "audience": [
+      "beginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=nBz9oFpbTv4",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [
+      "OpenLane"
+    ],
+    "tags": [
+      "openlane",
+      "installation"
+    ]
+  },
+  {
+    "id": "1004",
+    "title": "From Top to Transistors: Open-Source Verilog to ASIC Flow",
+    "description": "A workshop-style video demonstrating a full RTL-to-GDSII ASIC design flow using open-source tools including Yosys, OpenROAD (with GUI), and the SkyWater 130 nm PDK. It covers synthesis, placement, routing, DRC, clock tree inspection, and GDSII generation.",
+    "type": "video",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "synthesis",
+      "placement",
+      "routing",
+      "drc",
+      "gds"
+    ],
+    "format": [
+      "video"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=Q99vxvszktI&t=1109s",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [
+      "OpenROAD, OpenLane"
+    ],
+    "tags": [
+      "openroad",
+      "openlane",
+      "yosys",
+      "sky130"
+    ]
+  },
+  {
+    "id": "1005",
+    "title": "Yosys",
+    "description": "Yosys is an open-source framework for Verilog RTL synthesis. It supports numerous backends and integrates with tools like OpenROAD and nextpnr.",
+    "type": "tool",
+    "topics": [
+      "digital"
+    ],
+    "workflow_stage": [
+      "synthesis"
+    ],
+    "format": [
+      "repo"
+    ],
+    "audience": [
+      "beginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://github.com/YosysHQ/yosys",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [
+      "OpenLane",
+      "OpenROAD",
+      "Librelane"
+    ],
+    "tags": [
+      "rtl",
+      "logic-synthesis"
+    ]
+  },
+  {
+    "id": "1006",
+    "title": "KLayout",
+    "description": "KLayout is a powerful open-source layout viewer and editor for integrated circuits, supporting GDSII and OASIS formats. It also features Python scripting for layout automation.",
+    "type": "tool",
+    "topics": [
+      "digital",
+      "analog",
+      "mixed-signal"
+    ],
+    "workflow_stage": [
+      "floorplanning",
+      "placement",
+      "routing",
+      "gds",
+      "drc",
+      "lvs"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.klayout.de/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [
+      "Librelane",
+      "OpenROAD",
+      "OpenLane"
+    ],
+    "tags": [
+      "layout",
+      "gds",
+      "oasis",
+      "lvs",
+      "drc"
+    ]
+  },
+  {
+    "id": "1007",
+    "title": "Magic VLSI",
+    "description": "Magic is a venerable open-source VLSI layout tool. It supports DRC, LVS, and GDS export and is used in many open-source PDK workflows.",
+    "type": "tool",
+    "topics": [
+      "digital",
+      "analog",
+      "mixed-signal"
+    ],
+    "workflow_stage": [
+      "floorplanning",
+      "placement",
+      "routing",
+      "extraction",
+      "drc",
+      "lvs",
+      "gds"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "http://opencircuitdesign.com/magic/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [
+      "OpenLane",
+      "Librelane",
+      "OpenROAD"
+    ],
+    "tags": [
+      "layout",
+      "checker"
+    ]
+  },
+  {
+    "id": "1008",
+    "title": "Netgen",
+    "description": "Netgen is a tool for netlist comparison (LVS) used to verify that layout and schematic netlists are functionally equivalent.",
+    "type": "tool",
+    "topics": [
+      "digital"
+    ],
+    "workflow_stage": [
+      "lvs"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [],
+    "license": "",
+    "language": "en",
+    "url": "http://opencircuitdesign.com/netgen/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [
+      "Librelane"
+    ],
+    "tags": [
+      "lvs",
+      "netlist-compare"
+    ]
+  },
+  {
+    "id": "1009",
+    "title": "xschem",
+    "description": "xschem is an open-source schematic capture tool compatible with ngspice and other simulators. It is used widely in analog IC workflows with open-source PDKs.",
+    "type": "tool",
+    "topics": [
+      "analog",
+      "digital",
+      "mixed-signal"
+    ],
+    "workflow_stage": [
+      "simulation"
+    ],
+    "format": [
+      "repo"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://github.com/StefanSchippers/xschem",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "schematic",
+      "spice"
+    ]
+  },
+  {
+    "id": "1010",
+    "title": "Skywater PDK Docs",
+    "description": "Official documentation for the Sky130 open-source PDK, maintained by Google and Skywater. Includes design rules, device models, and usage tutorials.",
+    "type": "doc",
+    "topics": [
+      "digital",
+      "analog"
+    ],
+    "workflow_stage": [],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://skywater-pdk.readthedocs.io/en/main/",
+    "pdk": [
+      "sky130"
+    ],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "pdk",
+      "docs"
+    ]
+  },
+  {
+    "id": "1011",
+    "title": "Tiny Tapeout",
+    "description": "Tiny Tapeout is a project that helps you get your digital design manufactured using open-source tools and a collaborative MPW service. Ideal for educators and hobbyists.",
+    "type": "project",
+    "topics": [
+      "digital",
+      "analog",
+      "mixed-signal",
+      "education"
+    ],
+    "workflow_stage": [
+      "gds",
+      "signoff",
+      "integration"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate",
+      "advanced",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://tinytapeout.com/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "mpw",
+      "education"
+    ]
+  },
+  {
+    "id": "1012",
+    "title": "FOSSi Foundation",
+    "description": "The Free and Open Source Silicon Foundation supports the development and use of open-source hardware, including digital and analog IC design tools and flows.",
+    "type": "community",
+    "topics": [
+      "education"
+    ],
+    "workflow_stage": [],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate",
+      "advanced",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://fossi-foundation.org/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "community",
+      "foundation"
+    ]
+  },
+  {
+    "id": "1013",
+    "title": "Open Circuit Design",
+    "description": "A hub of open-source EDA tools including Magic, Netgen, and others. Maintained by Tim Edwards, key contributor to the open-source silicon movement.",
+    "type": "tool",
+    "topics": [
+      "digital",
+      "analog"
+    ],
+    "workflow_stage": [],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "http://opencircuitdesign.com/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "magic",
+      "netgen",
+      "ecosystem"
+    ]
+  },
+  {
+    "id": "1014",
+    "title": "Chipathon",
+    "description": "The Chipathon Contest, organized annually since 2021 by the IEEE Solid-State Circuits Society under its PICO (Platform for IC Design Outreach) program, is an open-source IC design competition now in its fifth edition. Held once per year, it aims to foster collaboration and education in analog and digital design using the GF180MCU open-source PDK. The contest encourages participation from pre-college students, undergraduates, and underrepresented regions, with teams mentored by experienced IC designers. This year’s focus includes MOSbius-style chips, LLM-driven digital workflows, and AI-assisted analog layout automation using gLayout, promoting hands-on learning and community-driven innovation.",
+    "type": [
+      "community",
+      "project"
+    ],
+    "topics": [
+      "education",
+      "digital",
+      "analog",
+      "mixed-signal"
+    ],
+    "workflow_stage": [],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate",
+      "advanced",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://sscs.ieee.org/technical-committees/tc-ose/sscs-pico-design-contest/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "contest",
+      "education"
+    ]
+  },
+  {
+    "id": "1015",
+    "title": "MOSbius Project",
+    "description": "MOSbius is an open-source educational chip platform designed to teach analog IC design through hands-on experimentation.",
+    "type": "project",
+    "topics": [
+      "analog",
+      "education"
+    ],
+    "workflow_stage": [
+      "simulation",
+      "integration"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate",
+      "advanced",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://mosbius.org/0_front_matter/intro.html",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "education",
+      "analog"
+    ]
+  },
+  {
+    "id": "1016",
+    "title": "Chipdesign Germany",
+    "description": "Chipdesign Germany is a national initiative launched in 2024 to strengthen Germany’s chip design ecosystem through open collaboration, education, and innovation.",
+    "type": "community",
+    "topics": [
+      "education"
+    ],
+    "workflow_stage": [],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://chipdesign.de/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "initiative",
+      "germany",
+      "ecosystem"
+    ]
+  },
+  {
+    "id": "1017",
+    "title": "OpenROAD",
+    "description": "A fully open-source digital physical design system that automates the RTL-to-GDSII flow with timing closure.",
+    "type": "tool",
+    "topics": [
+      "digital",
+      "education",
+      "mixed-signal"
+    ],
+    "workflow_stage": [
+      "floorplanning",
+      "placement",
+      "cts",
+      "routing",
+      "extraction",
+      "sta",
+      "gds",
+      "signoff",
+      "integration"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://theopenroadproject.org/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "pdn",
+      "timing",
+      "def",
+      "lef"
+    ]
+  },
+  {
+    "id": "1018",
+    "title": "LibreLane",
+    "description": "A modular, containerized open-source flow that integrates Yosys, OpenROAD, Magic, KLayout, Netgen and checkers for a reproducible RTL-to-GDSII flow.",
+    "type": "tool",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "synthesis",
+      "floorplanning",
+      "placement",
+      "cts",
+      "routing",
+      "extraction",
+      "sta",
+      "drc",
+      "lvs",
+      "gds",
+      "signoff"
+    ],
+    "format": [
+      "repo"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate",
+      "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://github.com/librelane/librelane",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "flow",
+      "reproducible"
+    ]
+  },
+  {
+    "id": "1019",
+    "title": "Verilator",
+    "description": "Fast open-source Verilog/SystemVerilog simulator for cycle-accurate functional verification.",
+    "type": "tool",
+    "topics": [
+      "digital"
+    ],
+    "workflow_stage": [
+      "simulation"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "intermediate",
+      "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.veripool.org/verilator/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "simulation",
+      "waveforms"
+    ]
+  },
+  {
+    "id": "1020",
+    "title": "Icarus Verilog",
+    "description": "Open-source Verilog simulation and synthesis toolchain, widely used in education.",
+    "type": "tool",
+    "topics": [
+      "digital"
+    ],
+    "workflow_stage": [
+      "simulation"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://bleyer.org/icarus/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "simulation"
+    ]
+  },
+  {
+    "id": "1021",
+    "title": "ngspice",
+    "description": "Open-source SPICE simulator used for analog and mixed-signal circuit simulation.",
+    "type": "tool",
+    "topics": [
+      "analog",
+      "mixed-signal"
+    ],
+    "workflow_stage": [
+      "simulation"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://ngspice.sourceforge.io/",
+    "pdk": [],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "spice",
+      "analog"
+    ]
+  },
+  {
+    "id": "1022",
+    "title": "SkyWater SKY130 PDK (GitHub)",
+    "description": "Public repository for the SkyWater SKY130 open-source PDK.",
+    "type": "pdk",
+    "topics": [
+      "digital",
+      "analog",
+      "mixed-signal"
+    ],
+    "workflow_stage": [],
+    "format": [
+      "repo"
+    ],
+    "audience": [
+      "beginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://github.com/google/skywater-pdk",
+    "pdk": [
+      "sky130"
+    ],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "pdk",
+      "models",
+      "rules"
+    ]
+  },
+  {
+    "id": "1023",
+    "title": "GF180MCU PDK (open docs)",
+    "description": "Documentation portal for the GlobalFoundries GF180MCU open-source PDK.",
+    "type": "pdk",
+    "topics": [
+      "digital",
+      "analog",
+      "mixed-signal"
+    ],
+    "workflow_stage": [],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://gf180mcu-pdk.readthedocs.io/",
+    "pdk": [
+      "gf180mcu"
+    ],
+    "last_checked": "2025-10-27",
+    "related_handbook": [],
+    "tags": [
+      "pdk"
+    ]
+  },
+  {
+    "id": "1024",
+    "title": "Verilog - Hierarchisches Design",
+    "description": "An introducting presentation to hirarchical design concepts with verilog.",
+    "type": "course",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "verilog"
+    ],
+    "format": [
+      "slides"
+    ],
+    "audience": [
+      "begginner",
+      "instructor"
+    ],
+    "license": "",
+    "language": "de",
+    "url": "https://tu-dresden.de/ing/elektrotechnik/iee/hpsn/ressourcen/dateien/vorlesungen/sse_2020/SSE_Vorlesung_5c_Verilog_Hierarchisches_Design.pdf?lang=de",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1025",
+    "title": "Complex Digital ASIC Design - Verilog HDL",
+    "description": "Hands-on introduction to Verilog with many examples.",
+    "type": "course",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "verilog"
+    ],
+    "format": [
+      "slides"
+    ],
+    "audience": [
+      "intermediate",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.csl.cornell.edu/courses/ece5745/handouts/ece5745-tut4-verilog.pdf",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1026",
+    "title": "Verilog HDL",
+    "description": "Detailed conceptual online tutorial.",
+    "type": "course",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "verilog"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://vlsiverify.com/verilog/#google_vignette",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1027",
+    "title": "Verilog AMS Tutorials",
+    "description": "Detailed, fundamental and conceptual online tutorial with many valuable examples",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://verilogams.com/tutorials/index.html",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1028",
+    "title": "Verilog Simulation Guide",
+    "description": "Specific reference work to Verilog",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "pdf"
+    ],
+    "audience": [
+      "begginner",
+      "intermediate",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://ww1.microchip.com/downloads/aemdocuments/documents/fpga/core-docs/Libero/11_8_3/Tool/vlogsim_ug.pdf",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1029",
+    "title": "Verilog Tutorials and Examples",
+    "description": "Detailed conceptual online tutorial",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://nandland.com/learn-verilog/",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1030",
+    "title": "Welcome to Verilog Page",
+    "description": "Online-Repository for Tutorials, Examples, Questions, Tools, Books, Links, FAQ (extended, detailed, with examples, ... OK!)",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner",
+      "intermediate",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.asic-world.com/verilog/index.html",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1031",
+    "title": "Learn Verilog!",
+    "description": "Detailed conceptual online tutorial.",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.chipverify.com/tutorials/verilog",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1032",
+    "title": "Verilog Pro",
+    "description": "Discussions of special topics in Verilog",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.verilogpro.com/",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1033",
+    "title": "Ultimate Guide: Verilog Test Bench",
+    "description": "Article about how to write and use Verilog testbenches, with examples",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner",
+      "intermediate",
+      "advanced",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://hardwarebee.com/ultimate-guide-verilog-test-bench/",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1034",
+    "title": "Verilog (mikrocontroller.net)",
+    "description": "A concise online summary to Verilog",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "verilog"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner"
+    ],
+    "license": "",
+    "language": "de",
+    "url": "https://www.mikrocontroller.net/articles/Verilog",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1035",
+    "title": "Getting Started with Verilog",
+    "description": "Introductory article to Verilog HDL",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "verilog"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.geeksforgeeks.org/electronics-engineering/getting-started-with-verilog/",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1036",
+    "title": "The Designer’s Guide to Verilog (Doulos)",
+    "description": "Online tutorial with useful examples (25 chapters)",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.doulos.com/knowhow/verilog/",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1037",
+    "title": "Verilog Tutorial (UMD PDF)",
+    "description": "Systematic Verilog tutorial based on examples",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "pdf"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "http://classweb.ece.umd.edu/enee359a/verilog_tutorial.pdf",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1038",
+    "title": "HDLBits – Problem Sets",
+    "description": "Extended and detailed online tutorial from simple wires to larger circuits",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate",
+      "advanced",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://hdlbits.01xz.net/wiki/Problem_sets",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "exercises"
+    ]
+  },
+  {
+    "id": "1039",
+    "title": "Verilog Manual (UT Austin)",
+    "description": "Concise online summary to Verilog",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "verilog"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://users.ece.utexas.edu/~patt/04s.382N/tutorial/verilog_manual.html",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1040",
+    "title": "Verilog HDL tips and tricks (fpga4fun)",
+    "description": "Hints and small tips for Verilog users",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "verilog"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.fpga4fun.com/VerilogTips.html",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "tips"
+    ]
+  },
+  {
+    "id": "1041",
+    "title": "Microsoft Bing: Verilog Tutorial",
+    "description": "A list of Verilog video tutorials (aggregated search results)",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "video"
+    ],
+    "audience": [
+      "begginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "",
+    "url": "https://www.bing.com/videos/search?q=%22Verilog+Tutorial%22+on+Verilog+Learning&qpvt=%22Verilog+Tutorial%22+on+Verilog+Learning&FORM=VDRE",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "search"
+    ]
+  },
+  {
+    "id": "1042",
+    "title": "Verilog Tutorial For Beginners",
+    "description": "Video tutorial playlist in 76 chapters (basic to advanced)",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "verilog"
+    ],
+    "format": [
+      "video"
+    ],
+    "audience": [
+      "begginner",
+      "intermediate",
+      "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/playlist?list=PLAC_jmBddcjTPEh1UV_ojRJmsx2D9sQXH",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "playlist"
+    ]
+  },
+  {
+    "id": "1043",
+    "title": "Verification Guide (SystemVerilog/UVM)",
+    "description": "Database with tutorials for SystemVerilog, UVM, SystemC, ASIC Verification, and general verification topics",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "simulation",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "intermediate",
+      "advanced",
+      "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://verificationguide.com/",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "uvm",
+      "systemverilog"
+    ]
+  },
+  {
+    "id": "1044",
+    "title": "Verilog Design in the Real World",
+    "description": "Chapter with Verilog HDL examples (PDF, ~40 pages)",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "pdf"
+    ],
+    "audience": [
+      "beginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://paginas.fe.up.pt/~aja/PSD2005_06/docs/sampleVerilog2.pdf",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1045",
+    "title": "CSCI 320 Handbook on Verilog HDL",
+    "description": "Older introduction to Verilog",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "verilog"
+    ],
+    "format": [
+      "pdf"
+    ],
+    "audience": [],
+    "license": "",
+    "language": "en",
+    "url": "https://web.archive.org/web/20060811033511/http://www.eg.bucknell.edu/~cs320/1995-fall/manual.pdf",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "archive"
+    ]
+  },
+  {
+    "id": "1046",
+    "title": "Field-Programmable Gate Arrays Explained",
+    "description": "Introduction to FPGAs: architecture, design flow, tools, languages, and testing",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "pdf"
+    ],
+    "audience": [
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://files.digilent.com/reference/Field_Programmable_Gate_Arrays_Explained.pdf?vgo_ee=Svlz9P8CUE%2Ff5gcjjuNkVDhfgqjUGvDNvinLnxvo3649qxCjnAY%3D%3AEdKQEbBQUAtkaMD%2F7N%2Fh%2FpR6ohwanz7L",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "fpga"
+    ]
+  },
+  {
+    "id": "1047",
+    "title": "Wikibooks: Programmable Logic/Verilog",
+    "description": "Introduction to programmable logic with Verilog",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "verilog"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://en.wikibooks.org/wiki/Programmable_Logic/Verilog",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "wiki"
+    ]
+  },
+  {
+    "id": "1048",
+    "title": "SystemVerilog for Verification",
+    "description": "A book on SystemVerilog for simulation and verification with code examples.",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "simulation",
+      "verification"
+    ],
+    "format": [
+      "pdf"
+    ],
+    "audience": [
+      "intermediate",
+      "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://3ec1218usm.wordpress.com/wp-content/uploads/2016/12/book_systemverilog_for_verification.pdf",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "systemverilog",
+      "uvm"
+    ]
+  },
+  {
+    "id": "1049",
+    "title": "FPGA Prototyping By Verilog Examples (Chu)",
+    "description": "Compendium for FPGA prototyping with numerous figures and Verilog examples.",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "specs",
+      "simulation",
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "pdf"
+    ],
+    "audience": [
+      "intermediate",
+      "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://d1.amobbs.com/bbs_upload782111/files_26/ourdev_533796.pdf",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "fpga",
+      "book"
+    ]
+  },
+  {
+    "id": "1050",
+    "title": "Introduction to Verilog (Nyasulu)",
+    "description": "Short repetition course on Verilog",
+    "type": "documentation",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "synthesis"
+    ],
+    "format": [
+      "pdf"
+    ],
+    "audience": [
+      "begginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.cse.wustl.edu/~roger/465M/PetervrIK.pdf",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": []
+  },
+  {
+    "id": "1051",
+    "title": "Verilog HDL Quick Reference Guide (Sutherland)",
+    "description": "Quick reference guide to Verilog.",
+    "type": "documentation",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "synthesis",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "begginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "http://www.emmelmann.org/Library/Tutorials/docs/verilog_ref_guide/vlog_ref_top.html",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "reference"
+    ]
+  },
+  {
+    "id": "1052",
+    "title": "Verilog-AMS Language Reference Manual",
+    "description": "Reference manual for Verilog-AMS",
+    "type": "documentation",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "simulation",
+      "verification"
+    ],
+    "format": [
+      "pdf"
+    ],
+    "audience": [
+      "begginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://accellera.org/images/downloads/standards/v-ams/VAMS-LRM-2-4.pdf",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "reference",
+      "verilog-ams"
+    ]
+  },
+  {
+    "id": "1053",
+    "title": "Popular FPGA/Verilog/VHDL Projects",
+    "description": "Links to FPGA projects with Verilog and VHDL, with supporting materials",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "simulation",
+      "verification",
+      "synthesis"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [
+      "beginner",
+      "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.fpga4student.com/p/verilog.html",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "projects"
+    ]
+  },
+  {
+    "id": "1054",
+    "title": "Forum: FPGA, VHDL & Co.",
+    "description": "Discussion forum for microcontroller, FPGA, VHDL and related topics",
+    "type": "tutorial",
+    "topics": [
+      "digital",
+      "education"
+    ],
+    "workflow_stage": [
+      "synthesis",
+      "simulation",
+      "verification"
+    ],
+    "format": [
+      "website"
+    ],
+    "audience": [],
+    "license": "",
+    "language": "de",
+    "url": "https://www.mikrocontroller.net/topic/50462",
+    "pdk": [],
+    "last_checked": "2025-10-28",
+    "related_handbook": [],
+    "tags": [
+      "forum"
+    ]
+  },{
+    "id": "",
+    "title": "FLOORPLAN - VLSI TALKS",
+    "description": "Documentation detailing the Floorplan stage, covering input files (RTL, SDC, LEF, DEF, SPEF, UPF, GDS) [1-3], sanity checks [3-5], core parameters (Aspect Ratio, Utilization) [6, 7], macro guidelines [8], and types of blockages and floorplans [9, 10].",
+    "type": "doc",
+    "topics": [
+        "digital"
+    ],
+    "workflow_stage": [
+        "floorplanning"
+    ],
+    "format": [
+        "website"
+    ],
+    "audience": [
+        "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://vlsitalks.com/physical-design/floorplan/",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+    ]
+  },{
+    "id": "",
+    "title": "PD Lec 15- Floor-planning [part-1] | VLSI | Physical Design",
+    "description": "Introduces standard cells, partitioning, hierarchical vs. flat design, defines macros (IP, black box, e.g., RAM, ROM, PLL) [11-13], standard cell rows [14], manufacturing grid [14, 15], and core utilization [15].",
+    "type": "course",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "floorplanning"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "beginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=Z1Cxbn5LOYg",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+    ]
+},{
+    "id": "",
+    "title": "PD Lec 16- Floor-planning [part-2] | VLSI | Physical Design",
+    "description": "Discusses Aspect Ratio (V/H routing resources ratio) [16, 17]. Defines Core Utilization calculation based on row and channel area [17, 18]. Differentiates logical pins (netlist) from physical ports (layout) and their placement in metal layers (e.g., M4, M6) [19-21].",
+    "type": "course",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "floorplanning"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=iKGxOVbwi40",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "aspect ratio",
+        "core utilization",
+        "placement area",
+        "pins",
+        "ports",
+        "metal layers"
+    ]
+},{
+    "id": "",
+    "title": "PD Lec 17- Floorplanning & IO Placement [part-3] | VLSI | Physical Design",
+    "description": "Classifies ports (data, clock, power, analog/digital) [22, 23]. Details Non-Default Rules (NDR) for clock ports (double width/spacing) for low resistance, low latency, and noise prevention [24-27]. Reviews placement quality checks (unplaced ports, blockages, guard rings) [28, 29].",
+    "type": "course",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "floorplanning"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=YcwY1PH31qg",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "IO placement",
+        "Non-Default Rule (NDR)",
+        "clock ports",
+        "power ports",
+        "noise prevention",
+        "guard ring",
+        "latency"
+    ]
+},{
+    "id": "",
+    "title": "PD Lec 18- Macro Placement & Floor-planning [part-4] | VLSI | Physical Design",
+    "description": "Defines macros as Hard IPs optimized for PPA [30]. Explains their height (they block higher metal layers M3-M5) [31, 32]. Guidelines: placement at periphery [33], avoid center [34], ensure room for pin routing [35], and DFM rule restricting rotation to 0 or 180 degrees (substrate continuity) [36, 37].",
+    "type": "course",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "floorplanning"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=AW6OwZxY7VY",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "macro placement",
+        "hard IP",
+        "PPA",
+        "routing blockage",
+        "DFM",
+        "rotation",
+        "substrate continuity"
+    ]
+},{
+    "id": "",
+    "title": "PD Lec 19- Macro Placement Guidelines & Floor-planning [part-5] | VLSI | Physical Design",
+    "description": "Focuses on channel spacing: abutment is possible if pins are central, but mandatory spacing is needed if pins are on the edge [38, 39]. Placement should group macros by common hierarchy [39]. Introduces Fly Line Analysis to reduce net delay and congestion [40, 41]. Macro location must be fixed during floorplan [41].",
+    "type": "course",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "floorplanning"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=IG0EWRcDkl8",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "macro placement",
+        "abutted",
+        "channel spacing",
+        "hierarchy",
+        "fly line analysis",
+        "congestion",
+        "fixed location"
+    ]
+},{
+    "id": "",
+    "title": "PD Lec 20- Macro Channel Spacing Estimation & Floor-planning [part-6] | VLSI | Physical Design",
+    "description": "Details the calculation of minimum channel spacing between macros. Defines Metal Pitch (center-to-center distance) [42]. Formula: (Total Number of Pins * Metal Pitch) / Effective Routing Layers [43, 44]. Emphasizes adding spacing for power nets (VDD/VSS) [44].",
+    "type": "course",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "floorplanning"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=3n_v_1HRlzM",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "macro placement",
+        "channel spacing",
+        "metal pitch",
+        "routing layers",
+        "calculation"
+    ]
+},{
+    "id": "",
+    "title": "PD Lec 21- Macro Placement Guidelines Floor-planning [part-7] | VLSI | Physical Design",
+    "description": "Analyzes notches (unwanted space) [45]. Explains how the tool's 'greedy algorithm' exploits notches for timing optimization, causing routing congestion/DRC issues [46, 47]. Details blockage types used to prevent this: Hard blockage (blocks everything), Soft blockage, Partial blockage (allows registers), and Allow Buffer Only [48-50]. Halo is defined as a hard blockage that moves with the macro [48, 51].",
+    "type": "course",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "floorplanning"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=HVeSgMS8-SU",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "macro placement",
+        "notches",
+        "blockages",
+        "greedy algorithm",
+        "congestion",
+        "Hard blockage",
+        "Halo"
+    ]
+},{
+    "id": "",
+    "title": "PD Lec 24 - Power planning and power mesh creation| Floor-planning | VLSI | Physical Design",
+    "description": "Explains power planning and routing resources. Higher metal layers have lower resistance [52, 53]. Describes the Power Ring (between die/core) [54] and the Power Grid/Mesh (top two layers in core) [55]. Standard Cell Rails (lowest layer, e.g., M2) connect to the mesh via a via ladder [55, 56].",
+    "type": "course",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "floorplanning"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=hqibU4UqoLk",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "power planning",
+        "power mesh",
+        "power grid",
+        "metal layers",
+        "via ladder",
+        "power ring"
+    ]
+},{
+    "id": "",
+    "title": "RTL Synthesis — Advanced Digital Systems Design Fall 2024 documentation",
+    "description": "Academic documentation on RTL synthesis, optimization, and mapping across abstraction levels (System, RTL, Gate). Covers SystemVerilog guidelines, FSM modeling, and demonstration using Cadence Genus for mapping to generic and technology-specific gates.",
+    "type": "doc",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "synthesis"
+    ],
+    "format": [
+        "website"
+    ],
+    "audience": [
+        "intermediate",
+        "advanced",
+        "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://schaumont.dyn.wpi.edu/ece574f24/04synthesis.html",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "RTL",
+        "SystemVerilog",
+        "optimization",
+        "Genus",
+        "Cadence",
+        "FSM",
+        "logic inference",
+        "timing analysis"
+    ]
+},{
+    "id": "",
+    "title": "YUG9: Understanding the Yosys synth_ice40 flow with Krystine",
+    "description": "Demonstration of the Yosys synthesis flow for iCE40 FPGAs (`synth_ice40`). Details steps: elaboration, flattening, optimization (`opt`, `wreduce`), Tech Mapping (LUTs, ALU/Mac), memory mapping, and JSON output for NextPNR.",
+    "type": "video",
+    "topics": [
+        "digital"
+    ],
+    "workflow_stage": [
+        "synthesis"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=s7KLNb8G_sI",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "Yosys",
+        "FPGA",
+        "iCE40",
+        "NextPNR",
+        "synthesis flow",
+        "tech mapping",
+        "memory mapping",
+        "JSON"
+    ]
+},{
+    "id": "",
+    "title": "Yosys Tutorial: Practical Guide to Synthesis - Command Macro vs. Baby Steps Comparison",
+    "description": "Tutorial comparing the Yosys synthesis using the high-level `synth` macro versus executing individual 'baby steps' commands (`proc`, `opt`, `fsm`, `techmap`). Demonstrates netlist dumping and comparison to find differences in compactness.",
+    "type": "tutorial",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "synthesis"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "intermediate",
+        "beginner"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=MRMKAOReHZI&list=PLtChGkQ0aIK-S0V_3RxgkGaZj8UgtjcyQ&index=8",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "Yosys",
+        "synthesis flow",
+        "command comparison",
+        "macro",
+        "netlist",
+        "proc",
+        "techmap",
+        "ABC"
+    ]
+},{
+    "id": "",
+    "title": "PD Lec 50 Clock Tree Synthesis | CTS | VLSI | Physical Design",
+    "description": "Explains CTS objectives: minimizing skew (local/global) and latency, balancing load, and reducing power/crosstalk. Details pre/post-CTS scenarios and the H-tree clock distribution structure.",
+    "type": "video",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "cts"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=WiWj6z7byRY",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "clock tree synthesis",
+        "clock skew",
+        "latency",
+        "H-tree",
+        "crosstalk",
+        "power"
+    ]
+},{
+    "id": "",
+    "title": "Understanding Clock Tree Synthesis (CTS) in VLSI: A Comprehensive Guide",
+    "description": "Comprehensive guide on CTS placement in the VLSI flow, objectives (skew, latency, power), physical scenarios (pre/post-CTS, driver levels), and methodologies for achieving timing closure and low power designs.",
+    "type": "video",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "cts"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "intermediate",
+        "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=b2QN5zeDinQ",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "clock tree synthesis",
+        "clock skew",
+        "latency",
+        "PPA",
+        "design flow",
+        "timing closure",
+        "EDA"
+    ]
+},{
+    "id": "",
+    "title": "PD Lec 33 - Placement and Optimization | VLSI | Physical Design",
+    "description": "Describes placement stages: Global Placement (approximate, allows overlap, timing-based binning), Detailed Placement (legalization, overlap removal), Legalization, and In-place optimization (PPA targets).",
+    "type": "video",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "placement"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "intermediate"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=8d-1gPMKVXE",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "global placement",
+        "detailed placement",
+        "legalization",
+        "optimization",
+        "PPA",
+        "timing driven",
+        "Synopsis"
+    ]
+},{
+    "id": "",
+    "title": "PD Lec 34 - place-opt understanding | VLSI | Physical Design",
+    "description": "Details the 5 stages of the `Place_opt` command: Initial Place (scan chain opt), Initial DRC (HFN buffering, DRV fixing), Initial Opto, Final Place (congestion fix), and Final Opto (timing legalization).",
+    "type": "video",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "placement",
+        "routing",
+        "sta",
+        "drc",
+        "signoff"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=4w1WXwOQTxw",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "placement optimization",
+        "DRV",
+        "scan chain",
+        "buffering",
+        "timing driven",
+        "congestion driven",
+        "Synopsis"
+    ]
+},{
+    "id": "",
+    "title": "What is Placement in VLSI Physical Design?",
+    "description": "Overview of placement stages (Global, Legalization, Detailed) and objectives (PPA, minimizing wire length/congestion). Discusses placement algorithms: analytic/force-directed methods, simulated annealing, min-cut partitioning, and ML integration.",
+    "type": "video",
+    "topics": [
+        "digital",
+        "education"
+    ],
+    "workflow_stage": [
+        "placement"
+    ],
+    "format": [
+        "video"
+    ],
+    "audience": [
+        "intermediate",
+        "advanced"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.youtube.com/watch?v=kHrBdv8cer0",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "global placement",
+        "detailed placement",
+        "legalization",
+        "PPA",
+        "min-cut",
+        "simulated annealing",
+        "analytic placement",
+        "optimization",
+        "congestion"
+    ]
+},{
+    "id": "",
+    "title": "Digital VLSI Design, Lecture 10: I/O and Pad Ring",
+    "description": "Academic slides covering IC packaging (DIP, BGA), chip-to-package connection (Wire Bonding, Flip Chip/C4, RDL), I/O circuit requirements (ESD, high drive, voltage shifting), I/O cell types, and SiP/MCM methodologies.",
+    "type": "doc",
+    "topics": [
+        "digital",
+        "mixed-signal",
+        "analog",
+        "education"
+    ],
+    "workflow_stage": [
+        "drc",
+        "extraction",
+        "integration",
+        "specs"
+    ],
+    "format": [
+        "pdf",
+        "slides"
+    ],
+    "audience": [
+        "advanced",
+        "instructor"
+    ],
+    "license": "",
+    "language": "en",
+    "url": "https://www.eng.biu.ac.il/temanad/files/2019/02/Lecture-10-IO.pdf",
+    "pdk": [],
+    "last_checked": "2025-11-03",
+    "related_handbook": [],
+    "tags": [
+        "IO",
+        "packaging",
+        "ESD",
+        "Flip Chip",
+        "Wire Bonding",
+        "SiP",
+        "MCM",
+        "power distribution",
+        "RDL"
+    ]
+}
+]
