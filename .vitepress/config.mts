@@ -4,6 +4,52 @@ import fs from 'node:fs'
 import path from 'node:path'
 import yaml from 'js-yaml'
 
+const materialFiles = ['collection.json', 'classifications.json'] as const
+const materialSourceDir = path.resolve(process.cwd(), 'src/ttt-materials/materials')
+
+function materialBrowserDataPlugin() {
+  const sources = materialFiles.map((fileName) => ({
+    fileName,
+    sourcePath: path.join(materialSourceDir, fileName)
+  }))
+
+  const missingFiles = sources.filter(({ sourcePath }) => !fs.existsSync(sourcePath))
+  if (missingFiles.length > 0) {
+    const missing = missingFiles.map(({ sourcePath }) => `  - ${sourcePath}`).join('\n')
+    throw new Error(
+      `[material-browser-data] Required material data is missing:\n${missing}\n` +
+      'Initialize the pinned submodules with: git submodule update --init --recursive'
+    )
+  }
+
+  return {
+    name: 'material-browser-data',
+    configureServer(server) {
+      server.middlewares.use((request, response, next) => {
+        const pathname = new URL(request.url || '/', 'http://localhost').pathname
+        const source = sources.find(({ fileName }) =>
+          pathname === `${server.config.base}materials/${fileName}`
+        )
+
+        if (!source) return next()
+
+        response.statusCode = 200
+        response.setHeader('Content-Type', 'application/json; charset=utf-8')
+        fs.createReadStream(source.sourcePath).pipe(response)
+      })
+    },
+    generateBundle() {
+      for (const source of sources) {
+        this.emitFile({
+          type: 'asset',
+          fileName: `materials/${source.fileName}`,
+          source: fs.readFileSync(source.sourcePath)
+        })
+      }
+    }
+  }
+}
+
 // Helper function to extract first H1 heading from markdown file
 function getTitleFromMarkdown (filePath: string): string {
   const fullPath = path.join(handbookRoot, `${filePath}.md`)
@@ -95,6 +141,7 @@ export default defineConfig({
   // Configure Vite to handle missing images gracefully
   vite: {
     plugins: [
+      materialBrowserDataPlugin(),
       {
         name: 'ignore-missing-images',
         resolveId(id) {
