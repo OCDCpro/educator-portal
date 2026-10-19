@@ -13,6 +13,11 @@
       button.primary { background: #0b5cff; color: #fff; border-color: #0b5cff; }
       button.danger { background: #ff3b30; color: #fff; border-color: #ff3b30; }
       button.ghost { background: transparent; border-color: #bbb; }
+      button:disabled { cursor: not-allowed; opacity: .55; }
+      .vote-button { min-width: 64px; white-space: nowrap; }
+      .vote-button[aria-pressed="true"] { background: #e6f0ff; border-color: #0b5cff; color: #0649c4; }
+      .status { min-height: 18px; }
+      .status.error { color: #a5281b; }
 
       table { border-collapse: collapse; width: 100%; max-width: 1080px; margin-top: 10px; }
       th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
@@ -78,6 +83,13 @@
           <label for="pdkFilter">PDK:</label>
           <select id="pdkFilter"><option value="__all__">All</option></select>
         </div>
+        <div class="group">
+          <label for="sortOrder">Sort:</label>
+          <select id="sortOrder">
+            <option value="original">Original</option>
+            <option value="votes">Most upvoted</option>
+          </select>
+        </div>
         <span id="resultCount" class="count"></span>
       </div>
 
@@ -93,6 +105,7 @@
       </div>
 
       <div id="tableContainer"></div>
+      <p id="votesStatus" class="note status" role="status" aria-live="polite"></p>
       <p class="note">Tip: comparte links con filtros: <code>?type=tool&topic=digital&stage=sta&format=repo&audience=beginner&lang=en&pdk=sky130</code>.</p>
       <p class="note">Edit mode es 100% cliente: modifica la tabla en memoria y te permite <b>Export JSON</b> para reemplazar tu <code>materials/collection.json</code>.</p>
     </div>
@@ -211,14 +224,25 @@
       </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.106.2"></script>
     <script>
       const COLLECTION_URL = 'materials/collection.json';
       const CLASSIFICATIONS_URL = 'materials/classifications.json';
+      const VOTES_CONFIG_URL = 'materials/votes-config.json';
+      const MATERIAL_ID_PATTERN = /^[A-Za-z0-9_-]{1,64}$/;
 
       let COLLECTION = [];
       let CLASSIFICATIONS = null;
       let EDIT_MODE = false;
       let CURRENT_EDIT_INDEX = -1; // -1 => new item
+      let SORT_ORDER = 'original';
+      let VOTES_CLIENT = null;
+      let VOTES_ENABLED = false;
+      const VOTE_COUNTS = new Map();
+      const MY_VOTES = new Set();
+      const VOTE_PENDING = new Set();
+      const PUBLISHED_IDS = new Set();
+      const ORIGINAL_ORDER = new Map();
 
       let FILTERS = { type:'__all__', topic:'__all__', stage:'__all__', format:'__all__', audience:'__all__', lang:'__all__', pdk:'__all__' };
       const toArray = (v) => Array.isArray(v) ? v : (v == null ? [] : [v]);
@@ -247,6 +271,95 @@
         const [col, cls] = await Promise.all([ fetchJSON(COLLECTION_URL), fetchJSON(CLASSIFICATIONS_URL) ]);
         COLLECTION = Array.isArray(col) ? col : [];
         CLASSIFICATIONS = cls;
+        const idFrequency = new Map();
+        COLLECTION.forEach((item, index) => {
+          const id = String(item.id ?? '');
+          idFrequency.set(id, (idFrequency.get(id) || 0) + 1);
+          if (id && !ORIGINAL_ORDER.has(id)) ORIGINAL_ORDER.set(id, index);
+        });
+        idFrequency.forEach((frequency, id) => {
+          if (frequency === 1 && MATERIAL_ID_PATTERN.test(id)) PUBLISHED_IDS.add(id);
+        });
+      }
+
+      function setVotesStatus(message, isError = false){
+        const status = document.getElementById('votesStatus');
+        status.textContent = message;
+        status.classList.toggle('error', isError);
+      }
+
+      async function loadVotes(){
+        const config = await fetchJSON(VOTES_CONFIG_URL);
+        if (!config?.enabled) {
+          setVotesStatus('Upvotes are not configured for this environment.');
+          return;
+        }
+        if (!window.supabase?.createClient) {
+          setVotesStatus('Upvotes are temporarily unavailable.', true);
+          return;
+        }
+
+        try {
+          VOTES_CLIENT = window.supabase.createClient(config.url, config.publishableKey);
+          const { data: counts, error: countsError } = await VOTES_CLIENT.rpc('get_material_vote_counts');
+          if (countsError) throw countsError;
+          (counts || []).forEach(row => VOTE_COUNTS.set(String(row.material_id), Number(row.vote_count) || 0));
+
+          const { data: sessionData, error: sessionError } = await VOTES_CLIENT.auth.getSession();
+          if (sessionError) throw sessionError;
+          if (sessionData.session) {
+            const { data: votes, error: votesError } = await VOTES_CLIENT
+              .from('material_votes')
+              .select('material_id');
+            if (votesError) throw votesError;
+            (votes || []).forEach(row => MY_VOTES.add(String(row.material_id)));
+          }
+
+          VOTES_ENABLED = true;
+          setVotesStatus('Upvotes are anonymous and linked only to this browser identity.');
+        } catch (error) {
+          console.warn('Could not load upvotes:', error);
+          VOTES_CLIENT = null;
+          VOTES_ENABLED = false;
+          setVotesStatus('Upvotes are temporarily unavailable; the material catalogue still works.', true);
+        }
+        renderTable();
+      }
+
+      async function ensureAnonymousSession(){
+        const { data: current, error: currentError } = await VOTES_CLIENT.auth.getSession();
+        if (currentError) throw currentError;
+        if (current.session) return current.session;
+        const { data, error } = await VOTES_CLIENT.auth.signInAnonymously();
+        if (error) throw error;
+        return data.session;
+      }
+
+      async function toggleVote(materialId){
+        if (!VOTES_ENABLED || !PUBLISHED_IDS.has(materialId) || VOTE_PENDING.has(materialId)) return;
+        VOTE_PENDING.add(materialId);
+        renderTable();
+        try {
+          await ensureAnonymousSession();
+          if (MY_VOTES.has(materialId)) {
+            const { error } = await VOTES_CLIENT.from('material_votes').delete().eq('material_id', materialId);
+            if (error) throw error;
+            MY_VOTES.delete(materialId);
+            VOTE_COUNTS.set(materialId, Math.max(0, (VOTE_COUNTS.get(materialId) || 0) - 1));
+          } else {
+            const { error } = await VOTES_CLIENT.from('material_votes').insert({ material_id: materialId });
+            if (error) throw error;
+            MY_VOTES.add(materialId);
+            VOTE_COUNTS.set(materialId, (VOTE_COUNTS.get(materialId) || 0) + 1);
+          }
+          setVotesStatus('Your anonymous upvote was saved.');
+        } catch (error) {
+          console.warn('Could not update upvote:', error);
+          setVotesStatus('Your upvote could not be saved. Please try again.', true);
+        } finally {
+          VOTE_PENDING.delete(materialId);
+          renderTable();
+        }
       }
 
       function getQueryParams(){
@@ -334,7 +447,7 @@
         const table = document.createElement('table');
         const thead = document.createElement('thead');
         const tr = document.createElement('tr');
-        const headers = [ 'id', 'Title', 'Type', 'Topics', 'Stage', 'Format', 'Audience', 'Language', 'PDK', 'URL', 'Actions'];
+        const headers = [ 'id', 'Title', 'Type', 'Topics', 'Stage', 'Format', 'Audience', 'Language', 'PDK', 'URL', 'Upvotes', 'Actions'];
         headers.forEach(h=>{ const th=document.createElement('th'); th.textContent=h; tr.appendChild(th); });
         thead.appendChild(tr);
         const tbody = document.createElement('tbody');
@@ -355,6 +468,14 @@
           matchesFacet(item.language, FILTERS.lang) &&
           matchesFacet(item.pdk, FILTERS.pdk)
         ));
+        if (SORT_ORDER === 'votes') {
+          filtered.sort((a, b) => {
+            const aId = String(a.id ?? '');
+            const bId = String(b.id ?? '');
+            const countDifference = (VOTE_COUNTS.get(bId) || 0) - (VOTE_COUNTS.get(aId) || 0);
+            return countDifference || (ORIGINAL_ORDER.get(aId) ?? Number.MAX_SAFE_INTEGER) - (ORIGINAL_ORDER.get(bId) ?? Number.MAX_SAFE_INTEGER);
+          });
+        }
 
         filtered.forEach(item => {
           const tr = document.createElement('tr');
@@ -386,6 +507,23 @@
           const tdPDK = document.createElement('td'); toArray(item.pdk).forEach(p=>{ const b=document.createElement('span'); b.className='badge'; b.textContent=p; tdPDK.appendChild(b); }); tr.appendChild(tdPDK);
 
           const tdUrl = document.createElement('td'); if(item.url){ const a=document.createElement('a'); a.href=item.url; a.target='_blank'; a.textContent='Link'; tdUrl.appendChild(a); } tr.appendChild(tdUrl);
+
+          const tdVotes = document.createElement('td');
+          const materialId = String(item.id ?? '');
+          const isPublished = PUBLISHED_IDS.has(materialId);
+          const voteButton = document.createElement('button');
+          const hasVoted = MY_VOTES.has(materialId);
+          voteButton.className = 'vote-button';
+          voteButton.type = 'button';
+          voteButton.setAttribute('aria-pressed', String(hasVoted));
+          voteButton.textContent = `${hasVoted ? '▲' : '△'} ${VOTE_COUNTS.get(materialId) || 0}`;
+          voteButton.disabled = !VOTES_ENABLED || !isPublished || VOTE_PENDING.has(materialId);
+          voteButton.title = !isPublished
+            ? 'Upvotes become available after this material is published with a unique ID.'
+            : (VOTES_ENABLED ? 'Toggle anonymous upvote' : 'Upvotes are unavailable');
+          voteButton.addEventListener('click', () => toggleVote(materialId));
+          tdVotes.appendChild(voteButton);
+          tr.appendChild(tdVotes);
 
           const tdAct = document.createElement('td');
           if (EDIT_MODE){
@@ -436,6 +574,7 @@
         document.getElementById('f_related').value = toArray(item?.related_handbook).join(', ');
         document.getElementById('f_lastChecked').value = item?.last_checked || '';
         document.getElementById('f_id').value = item?.id || '';
+        document.getElementById('f_id').readOnly = Boolean(item && PUBLISHED_IDS.has(String(item.id ?? '')));
 
         // Hide extra fields not in the common set
         const knownKeys = new Set(['title','url','description','type','topics','workflow_stage','format','audience','language','pdk','license','tags','related_handbook','last_checked','id']);
@@ -501,13 +640,22 @@
         ['type','topics','workflow_stage','format','audience','language','pdk','license','tags','related_handbook']
           .forEach(k=>{ if(Array.isArray(obj[k]) && obj[k].length===0) delete obj[k]; });
         if(!obj.title){ alert('Title is required'); return null; }
+        if(obj.id && !MATERIAL_ID_PATTERN.test(obj.id)){
+          alert('ID must contain 1–64 letters, numbers, underscores, or hyphens.');
+          return null;
+        }
+        const duplicateId = obj.id && COLLECTION.some((item, index) => index !== CURRENT_EDIT_INDEX && String(item.id ?? '') === obj.id);
+        if(duplicateId){ alert(`ID "${obj.id}" is already in use.`); return null; }
         return obj;
       }
 
       function saveEditor(){
         const obj = collectForm();
         if(!obj) return;
-        if(!obj.id){ obj.id = `itm_${Date.now().toString(36)}`; }
+        if(!obj.id){
+          do { obj.id = `itm_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`; }
+          while(COLLECTION.some(item => String(item.id ?? '') === obj.id));
+        }
 
         const warns = validateAgainstClassifications(obj);
         const warnEl = document.getElementById('warnings');
@@ -549,7 +697,14 @@
             if(!Array.isArray(arr)) throw new Error('File must be a JSON array');
             COLLECTION = arr;
             renderTable();
-            alert('Imported successfully. Remember to Export JSON to save to disk.');
+            const ids = arr.map(item => String(item?.id ?? ''));
+            const validIds = ids.filter(id => MATERIAL_ID_PATTERN.test(id));
+            const duplicateCount = validIds.length - new Set(validIds).size;
+            const invalidCount = ids.length - validIds.length;
+            const idWarning = invalidCount || duplicateCount
+              ? ` ${invalidCount} item(s) have a missing/invalid ID and ${duplicateCount} duplicate ID(s); those items cannot receive upvotes until fixed and published.`
+              : '';
+            alert('Imported successfully. Remember to Export JSON to save to disk.' + idWarning);
           } catch(e) {
             alert('Invalid JSON: ' + e.message);
           }
@@ -564,12 +719,14 @@
         createTableSkeleton();
         buildFilters();
         renderTable();
+        loadVotes();
 
         document.getElementById('toggleEdit').addEventListener('click', toggleEdit);
         document.getElementById('addBtn').addEventListener('click', ()=>{ CURRENT_EDIT_INDEX = -1; openEditor(null); });
         document.getElementById('exportBtn').addEventListener('click', exportJSON);
         document.getElementById('importBtn').addEventListener('click', ()=> document.getElementById('importFile').click());
         document.getElementById('importFile').addEventListener('change', (e)=>{ const f=e.target.files?.[0]; if(f) importJSONFromFile(f); e.target.value=''; });
+        document.getElementById('sortOrder').addEventListener('change', (event)=>{ SORT_ORDER = event.target.value; renderTable(); });
 
         document.getElementById('closeBtn').addEventListener('click', ()=> showModal(false));
         document.getElementById('saveBtn').addEventListener('click', saveEditor);

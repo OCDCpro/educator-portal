@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { defineConfig } from 'vitepress'
+import { loadEnv } from 'vite'
 import fs from 'node:fs'
 import path from 'node:path'
 import yaml from 'js-yaml'
@@ -12,6 +13,7 @@ function materialBrowserDataPlugin() {
     fileName,
     sourcePath: path.join(materialSourceDir, fileName)
   }))
+  let votesConfig = { enabled: false }
 
   const missingFiles = sources.filter(({ sourcePath }) => !fs.existsSync(sourcePath))
   if (missingFiles.length > 0) {
@@ -24,9 +26,38 @@ function materialBrowserDataPlugin() {
 
   return {
     name: 'material-browser-data',
+    config(_, { mode }) {
+      const env = { ...loadEnv(mode, process.cwd(), ''), ...process.env }
+      const url = env.SUPABASE_URL?.trim()
+      const publishableKey = env.SUPABASE_PUBLISHABLE_KEY?.trim()
+      const votesRequired = env.VOTES_REQUIRED === 'true'
+
+      if (Boolean(url) !== Boolean(publishableKey)) {
+        throw new Error(
+          '[material-browser-data] Configure both SUPABASE_URL and ' +
+          'SUPABASE_PUBLISHABLE_KEY, or neither.'
+        )
+      }
+      if (votesRequired && (!url || !publishableKey)) {
+        throw new Error(
+          '[material-browser-data] Voting is required for this build, but ' +
+          'SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY are missing.'
+        )
+      }
+
+      votesConfig = url && publishableKey
+        ? { enabled: true, url, publishableKey }
+        : { enabled: false }
+    },
     configureServer(server) {
       server.middlewares.use((request, response, next) => {
         const pathname = new URL(request.url || '/', 'http://localhost').pathname
+        if (pathname === `${server.config.base}materials/votes-config.json`) {
+          response.statusCode = 200
+          response.setHeader('Content-Type', 'application/json; charset=utf-8')
+          response.end(JSON.stringify(votesConfig))
+          return
+        }
         const source = sources.find(({ fileName }) =>
           pathname === `${server.config.base}materials/${fileName}`
         )
@@ -39,6 +70,11 @@ function materialBrowserDataPlugin() {
       })
     },
     generateBundle() {
+      this.emitFile({
+        type: 'asset',
+        fileName: 'materials/votes-config.json',
+        source: JSON.stringify(votesConfig)
+      })
       for (const source of sources) {
         this.emitFile({
           type: 'asset',
